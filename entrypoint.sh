@@ -12,4 +12,4 @@ if [ -n "$ADMIN_EMAIL" ] && [ -n "$ADMIN_PASSWORD" ]; then
 fi
 
 # 启动PocketBase服务
-exec /usr/local/bin/pocketbase serve --http=0.0.0.0:8090 --origins=* --dir=./pb_data 
+exec /usr/local/bin/pocketbase serve --http=0.0.0.0:8090 --origins=*
