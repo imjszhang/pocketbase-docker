@@ -19,3 +19,15 @@ services:
     environment:
       - ADMIN_EMAIL=admin@example.com  # 超级用户邮箱
       - ADMIN_PASSWORD=1234567890  # 超级用户密码 
+    networks:
+      - dokploy-network
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.pocketbase.rule=Host(`${DOMAIN:-pocketbase.localhost}`)"
+      - "traefik.http.routers.pocketbase.entrypoints=web"
+      - "traefik.http.services.pocketbase.loadbalancer.server.port=8090"
+      - "traefik.docker.network=dokploy-network"
+
+networks:
+  dokploy-network:
+    external: true 
