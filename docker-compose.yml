@@ -6,8 +6,8 @@ services:
         VERSION: 0.28.1
     container_name: pocketbase
     restart: unless-stopped
-    ports:
-      - "8090:8090"
+    expose:
+      - "8090"
     volumes:
       - /home/vagrant/dokploy/data/pocketbase/${DB_NAME:-test}/pb_data:/usr/local/bin/pb_data
     healthcheck:
