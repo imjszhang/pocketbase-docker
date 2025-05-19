@@ -1,3 +1,61 @@
+# PocketBase Docker
+
+这个Docker镜像包含了PocketBase，一个开源的后端框架，它提供了实时数据库、认证系统和文件存储。
+
+## 使用方法
+
+### 基本用法
+
+```bash
+docker run -p 8090:8090 -v /path/to/pb_data:/pb_data your-image-name
+```
+
+### 环境变量
+
+镜像支持以下环境变量：
+
+- `ADMIN_EMAIL`: 超级用户的电子邮箱
+- `ADMIN_PASSWORD`: 超级用户的密码
+
+当提供这两个环境变量时，容器启动时会自动创建一个超级用户。
+
+### 创建超级用户示例
+
+```bash
+docker run -p 8090:8090 \
+  -v /path/to/pb_data:/pb_data \
+  -e ADMIN_EMAIL=admin@example.com \
+  -e ADMIN_PASSWORD=your-secure-password \
+  your-image-name
+```
+
+### 使用Docker Compose
+
+```yaml
+version: '3'
+services:
+  pocketbase:
+    image: your-image-name
+    ports:
+      - "8090:8090"
+    volumes:
+      - ./pb_data:/pb_data
+    environment:
+      - ADMIN_EMAIL=admin@example.com
+      - ADMIN_PASSWORD=your-secure-password
+```
+
+## 构建镜像
+
+```bash
+docker build --build-arg VERSION=0.22.26 -t your-image-name:latest .
+```
+
+替换`VERSION`为您想要的PocketBase版本。
+
+## 数据持久化
+
+所有数据都存储在容器内的`/pb_data`目录。要持久化数据，请将此目录挂载到主机上的卷。
 
 <p align="center">
   <a href="https://pocketbase.io/">

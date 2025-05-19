@@ -1,0 +1,22 @@
+version: '3'
+
+services:
+  pocketbase:
+    build:
+      context: .
+      args:
+        VERSION: 0.22.26  # 指定PocketBase版本
+    container_name: pocketbase
+    restart: unless-stopped
+    ports:
+      - "8090:8090"
+    volumes:
+      - ./pb_data:/pb_data
+    healthcheck:
+      test: wget --no-verbose --tries=1 --spider http://localhost:8090/api/health || exit 1
+      interval: 5s
+      timeout: 5s
+      retries: 5
+    environment:
+      - ADMIN_EMAIL=admin@example.com  # 超级用户邮箱
+      - ADMIN_PASSWORD=your-secure-password  # 超级用户密码 
