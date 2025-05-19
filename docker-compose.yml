@@ -4,7 +4,6 @@ services:
       context: .
       args:
         VERSION: 0.28.1
-    container_name: pocketbase
     restart: unless-stopped
     expose:
       - "8090"
