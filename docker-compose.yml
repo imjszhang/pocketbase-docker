@@ -6,7 +6,7 @@ services:
         VERSION: 0.28.1
     container_name: pocketbase
     restart: unless-stopped
-    user: vagrant
+    user: root
     ports:
       - "8090:8090"
     volumes:
