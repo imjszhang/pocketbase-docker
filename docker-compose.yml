@@ -1,11 +1,10 @@
-version: '3'
 
 services:
   pocketbase:
     build:
       context: .
       args:
-        VERSION: 0.22.26  # 指定PocketBase版本
+        VERSION: 0.28.1
     container_name: pocketbase
     restart: unless-stopped
     ports:
@@ -19,4 +18,4 @@ services:
       retries: 5
     environment:
       - ADMIN_EMAIL=admin@example.com  # 超级用户邮箱
-      - ADMIN_PASSWORD=your-secure-password  # 超级用户密码 
+      - ADMIN_PASSWORD=1234567890  # 超级用户密码 
