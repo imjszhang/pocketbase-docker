@@ -24,7 +24,7 @@ services:
       - dokploy-network
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.pocketbase.rule=Host(`${DB_NAME}.${DOMAIN:-pocketbase.localhost}`)"
+      - "traefik.http.routers.pocketbase.rule=Host(`${DB_NAME:test}.${DOMAIN:-pocketbase.localhost}`)"
       - "traefik.http.routers.pocketbase.entrypoints=web"
       - "traefik.http.services.pocketbase.loadbalancer.server.port=8090"
       - "traefik.docker.network=dokploy-network"
