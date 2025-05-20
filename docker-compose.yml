@@ -5,6 +5,7 @@ services:
       args:
         VERSION: 0.28.1
     restart: unless-stopped
+    container_name: pocketbase-${DB_NAME:-test}
     expose:
       - "8090"
     volumes:
